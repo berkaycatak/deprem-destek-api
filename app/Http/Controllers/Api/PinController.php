@@ -35,7 +35,7 @@ class PinController extends Controller
     }
 
     public function status(Request $request){
-        $pin = Pin::where("id", $request->id);
+        $pin = Pin::find($request->id);
         $pin->status = $request->status;
         $save = $pin->save();
         return $save;
