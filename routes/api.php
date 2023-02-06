@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/pins', [PinController::class, 'list']);
 Route::post('/pins/add', [PinController::class, 'store']);
-//Route::post('/pins/{id}', [PinController::class, 'show']);
+Route::post('/pins/edit/status', [PinController::class, 'status']);
 

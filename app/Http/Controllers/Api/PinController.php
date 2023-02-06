@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PinController extends Controller
 {
     public function list(Request $request){
-        $pins = Pin::get();
+        $pins = Pin::where("status", 0)->get();
         return $pins;
     }
 
@@ -34,4 +34,11 @@ class PinController extends Controller
             return json_encode(["error" => 1, "message" => "Pin eklenirken hata oluştu"]);
     }
 
+    public function status(Request $request){
+        $pin = Pin::where("id", $request->id);
+        $pin->status = $request->status;
+        $save = $pin->save();
+        return $save;
+    }
 }
+
